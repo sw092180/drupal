@@ -30,7 +30,8 @@ RUN rm -f /usr/libexec/s2i/*
 COPY ./s2i/bin/ /usr/libexec/s2i
 
 # TODO: Drop the root user and make the content of /opt/app-root owned by user 1001
-RUN chown -R 1001:1001 /opt/app-root && chown -R 1001:1001 /usr/libexec/s2i && chmod -R 775 /usr/libexec/s2i
+RUN chown -R 1001:1001 /opt/app-root && chown -R 1001:1001 /usr/libexec/s2i && chmod -R 775 /usr/libexec/s2i && \
+chown -R 1001:1001 /tmp/src && chmod -R 775 /tmp/src
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001
@@ -39,4 +40,5 @@ USER 1001
 EXPOSE 8080
 
 # TODO: Set the default CMD for the image
-CMD ["/opt/rh/httpd24/root/usr/sbin/httpd -D FOREGROUD"]
+# CMD ["/opt/rh/httpd24/root/usr/sbin/httpd -D FOREGROUD"]
+CMD ["/usr/libexec/s2i/usage"]
