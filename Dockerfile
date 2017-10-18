@@ -31,7 +31,7 @@ COPY ./s2i/bin/ /usr/libexec/s2i
 # RUN chown -R 1001:1001 /opt/app-root
 
 # This default user is created in the openshift/base-centos7 image
-USER 1001
+# USER 1001
 
 # TODO: Set the default port for applications built using this image
 EXPOSE 8080
