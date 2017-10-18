@@ -6,3 +6,5 @@ shopt -s dotglob
 echo "---> Installing application source..."
 mv /tmp/src/src/000-default.conf.template /opt/app-root/etc/conf.d/000-default.conf.template
 mv /tmp/src/src/phpinfo.php ./
+chown -R 1001:1001 /opt/app-root
+chmod -R 775 /opt/app-root
