@@ -3,6 +3,8 @@
 export_vars=$(cgroup-limits); export $export_vars
 export DOCUMENTROOT=/
 
+echo "---> creating vars for php configuration"
+
 # Default php.ini configuration values, all taken
 # from php defaults.
 export ERROR_REPORTING=${ERROR_REPORTING:-E_ALL & ~E_NOTICE}
@@ -20,6 +22,8 @@ export OPCACHE_REVALIDATE_FREQ=${OPCACHE_REVALIDATE_FREQ:-2}
 
 export PHPRC=${PHPRC:-/etc/opt/rh/rh-php70/php.ini}
 export PHP_INI_SCAN_DIR=${PHP_INI_SCAN_DIR:-/etc/opt/rh/rh-php70/php.d}
+
+echo "---> creating php config files from templates"
 
 envsubst < /opt/app-root/etc/php.ini.template > /etc/opt/rh/rh-php70/php.ini
 envsubst < /opt/app-root/etc/php.d/10-opcache.ini.template > /etc/opt/rh/rh-php70/php.d/10-opcache.ini
@@ -41,6 +45,8 @@ else
   export HTTPD_MAX_REQUEST_WORKERS=${HTTPD_MAX_REQUEST_WORKERS:-$max_clients_computed}
   echo "-> Cgroups memory limit is set, using HTTPD_MAX_REQUEST_WORKERS=${HTTPD_MAX_REQUEST_WORKERS}"
 fi
+
+echo "---> Creating httpd config files from templates"
 
 envsubst < /opt/app-root/etc/conf.d/50-mpm-tuning.conf.template > /opt/app-root/etc/conf.d/50-mpm-tuning.conf
 envsubst < /opt/app-root/etc/conf.d/00-documentroot.conf.template > /opt/app-root/etc/conf.d/00-documentroot.conf
