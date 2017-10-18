@@ -1,0 +1,16 @@
+<VirtualHost *:8080>
+    DocumentRoot ${DOCUMENTROOT}
+    <Directory ${DOCUMENTROOT}>
+        SetEnvIf Request_URI "^/status" donotlog
+        SetEnvIf Request_URI "^/rtstatus" donotlog
+
+        Options -Indexes
+        AllowOverride All
+        Require all granted
+
+
+    </Directory>
+    ErrorLog logs/${HOSTNAME}-error.log
+    LogLevel warn
+    CustomLog logs/${HOSTNAME}-access.log xforwarded env=!donotlog
+</VirtualHost>
