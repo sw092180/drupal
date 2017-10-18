@@ -8,6 +8,8 @@ FROM registry.access.redhat.com/rhscl/php-70-rhel7
 # TODO: Rename the builder environment variable to inform users about application you provide them
 ENV DRUPAL_VERSION=7.50
 
+USER root
+
 # TODO: Set labels used in OpenShift to describe the builder image
 LABEL io.k8s.description="Platform for serving Drupal for hud.gov \
       io.k8s.display-name="Drupal 7.50" \
