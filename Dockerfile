@@ -26,11 +26,11 @@ COPY ./src/phpinfo.php /opt/app-root/src/
 
 # TODO: Copy the S2I scripts to /usr/libexec/s2i, since openshift/base-centos7 image
 # sets io.openshift.s2i.scripts-url label that way, or update that label
-RUN chown -R 1001:1001 /usr/libexec/s2i && rm -f /usr/libexec/s2i/*
+RUN rm -f /usr/libexec/s2i/*
 COPY ./s2i/bin/ /usr/libexec/s2i
 
 # TODO: Drop the root user and make the content of /opt/app-root owned by user 1001
-RUN chown -R 1001:1001 /opt/app-root
+RUN chown -R 1001:1001 /opt/app-root && chown -R 1001:1001 /usr/libexec/s2i
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001
