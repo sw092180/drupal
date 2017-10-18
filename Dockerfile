@@ -17,7 +17,7 @@ LABEL io.k8s.description="Platform for serving Drupal for hud.gov \
       io.openshift.tags="builder,html,php,drupal"
 
 # TODO: Install required packages here:
-RUN yum install -y httpd && yum clean all -y
+# RUN yum install -y httpd && yum clean all -y
 # RUN yum clean all -y
 
 # TODO (optional): Copy the builder files into /opt/app-root
