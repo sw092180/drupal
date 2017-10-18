@@ -4,5 +4,5 @@ set -e
 
 shopt -s dotglob
 echo "---> Installing application source..."
-mv /tmp/src/src/000-default.conf.template ./conf.d
+mv /tmp/src/src/000-default.conf.template /opt/app-root/etc/conf.d/000-default.conf.template
 mv /tmp/src/src/phpinfo.php ./
