@@ -53,7 +53,7 @@ envsubst < /opt/app-root/etc/conf.d/00-documentroot.conf.template > /opt/app-roo
 envsubst < /opt/app-root/etc/conf.d/000-default.conf.template > /opt/app-root/etc/conf.d/000-default.conf
 
 # chown -R 1001:1001 /opt/app-root
-chmod -R 775 /opt/app-root
+chmod -R 777 /opt/app-root
 
 exec httpd -D FOREGROUND
 
