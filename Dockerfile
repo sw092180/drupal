@@ -16,7 +16,7 @@ LABEL io.k8s.description="Platform for serving Drupal for hud.gov \
 
 # TODO: Install required packages here:
 # RUN yum install -y ... && yum clean all -y
-yum clean all -y
+RUN yum clean all -y
 
 # TODO (optional): Copy the builder files into /opt/app-root
 COPY ./src/000-default.conf.template /opt/app-root/etc/
